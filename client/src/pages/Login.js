@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ButtonG from "../components/ButtonG";
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 function Login() {
     const [clicked,setClicked]=useState(false);
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const navigate=useNavigate();
     async function submitForm(e){
         e.preventDefault();
         //console.log(email);
@@ -20,8 +22,19 @@ function Login() {
             })
         }
        const response= await fetch('http://localhost:4000/api/login',data);
-        const res=await response.json();
-        console.log(res);
+        const data1=await response.json();
+        if(data1.user){
+            localStorage.setItem('token',data.user);
+            localStorage.setItem('email',email);
+            localStorage.setItem('password',password);
+            alert('Logged in');
+            //window.location.href('/dashboard');
+            navigate('/dashboard');
+        }
+        else{
+            alert('Please check credentials');
+        }
+       // console.log(res);
 
     }
   return (<>
