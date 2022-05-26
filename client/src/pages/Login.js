@@ -25,10 +25,7 @@ function Login() {
         const data1=await response.json();
         if(data1.user){
             localStorage.setItem('token',data.user);
-            localStorage.setItem('email',email);
-            localStorage.setItem('password',password);
             alert('Logged in');
-            //window.location.href('/dashboard');
             navigate('/dashboard');
         }
         else{

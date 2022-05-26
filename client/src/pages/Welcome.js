@@ -8,8 +8,6 @@ function Welcome() {
   const navigate=useNavigate();
   const handleClickedLogout=()=>{
     localStorage.removeItem('token');
-    localStorage.removeItem('password');
-    localStorage.removeItem('email');
     navigate('/login');
   }
   useEffect(()=>{

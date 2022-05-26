@@ -30,7 +30,7 @@ function Login() {
                 alert('Please use other email as it is already taken');
             }
         }
-        if(data1.status==='ok'&&localStorage.getItem('token'))
+        if(data1.status==='ok')
             navigate('/login');
         console.log(data1);
 
